@@ -10,61 +10,61 @@ API_KEY = os.environ.get("NEWSDATA_API_KEY")
 COUNTRY_LANG_MAP = {
     # --- CHÂU Á & THÁI BÌNH DƯƠNG ---
     "vn": "vi",  # Việt Nam - Tiếng Việt
-    "jp": "ja",  # Nhật Bản - Tiếng Nhật (Newsdata dùng 'ja')
-    "kr": "ko",  # Hàn Quốc - Tiếng Hàn
-    "cn": "zh",  # Trung Quốc - Tiếng Trung
-    "tw": "zh",  # Đài Loan - Tiếng Trung
-    "hk": "zh",  # Hồng Kông - Tiếng Trung
-    "in": "hi",  # Ấn Độ - Tiếng Hindi (Hoặc dùng 'en' nếu muốn lấy báo tiếng Anh)
-    "id": "id",  # Indonesia - Tiếng Indo
-    "my": "ms",  # Malaysia - Tiếng Mã Lai
-    "th": "th",  # Thái Lan - Tiếng Thái
-    "sg": "en",  # Singapore - Tiếng Anh
-    "ph": "en",  # Philippines - Tiếng Anh
-    "au": "en",  # Úc - Tiếng Anh
-    "nz": "en",  # New Zealand - Tiếng Anh
+    # "jp": "ja",  # Nhật Bản - Tiếng Nhật (Newsdata dùng 'ja')
+    # "kr": "ko",  # Hàn Quốc - Tiếng Hàn
+    # "cn": "zh",  # Trung Quốc - Tiếng Trung
+    # "tw": "zh",  # Đài Loan - Tiếng Trung
+    # "hk": "zh",  # Hồng Kông - Tiếng Trung
+    # "in": "hi",  # Ấn Độ - Tiếng Hindi (Hoặc dùng 'en' nếu muốn lấy báo tiếng Anh)
+    # "id": "id",  # Indonesia - Tiếng Indo
+    # "my": "ms",  # Malaysia - Tiếng Mã Lai
+    # "th": "th",  # Thái Lan - Tiếng Thái
+    # "sg": "en",  # Singapore - Tiếng Anh
+    # "ph": "en",  # Philippines - Tiếng Anh
+    # "au": "en",  # Úc - Tiếng Anh
+    # "nz": "en",  # New Zealand - Tiếng Anh
 
-    # --- CHÂU ÂU ---
-    "gb": "en",  # Anh Quốc - Tiếng Anh
-    "fr": "fr",  # Pháp - Tiếng Pháp
-    "de": "de",  # Đức - Tiếng Đức
-    "it": "it",  # Ý - Tiếng Ý
-    "es": "es",  # Tây Ban Nha - Tiếng Tây Ban Nha
-    "pt": "pt",  # Bồ Đào Nha - Tiếng Bồ Đào Nha
-    "ru": "ru",  # Nga - Tiếng Nga
-    "ua": "uk",  # Ukraine - Tiếng Ukraine
-    "nl": "nl",  # Hà Lan - Tiếng Hà Lan
-    "be": "fr",  # Bỉ - Tiếng Pháp (Hoặc 'nl')
-    "ch": "de",  # Thụy Sĩ - Tiếng Đức (Hoặc 'fr', 'it')
-    "at": "de",  # Áo - Tiếng Đức
-    "se": "sv",  # Thụy Điển - Tiếng Thụy Điển
-    "no": "no",  # Na Uy - Tiếng Na Uy
-    "dk": "da",  # Đan Mạch - Tiếng Đan Mạch
-    "fi": "fi",  # Phần Lan - Tiếng Phần Lan
-    "pl": "pl",  # Ba Lan - Tiếng Ba Lan
-    "cz": "cs",  # Cộng hòa Séc - Tiếng Séc
-    "ro": "ro",  # Romania - Tiếng Romania
-    "hu": "hu",  # Hungary - Tiếng Hungary
-    "gr": "el",  # Hy Lạp - Tiếng Hy Lạp
-    "tr": "tr",  # Thổ Nhĩ Kỳ - Tiếng Thổ Nhĩ Kỳ
+    # # --- CHÂU ÂU ---
+    # "gb": "en",  # Anh Quốc - Tiếng Anh
+    # "fr": "fr",  # Pháp - Tiếng Pháp
+    # "de": "de",  # Đức - Tiếng Đức
+    # "it": "it",  # Ý - Tiếng Ý
+    # "es": "es",  # Tây Ban Nha - Tiếng Tây Ban Nha
+    # "pt": "pt",  # Bồ Đào Nha - Tiếng Bồ Đào Nha
+    # "ru": "ru",  # Nga - Tiếng Nga
+    # "ua": "uk",  # Ukraine - Tiếng Ukraine
+    # "nl": "nl",  # Hà Lan - Tiếng Hà Lan
+    # "be": "fr",  # Bỉ - Tiếng Pháp (Hoặc 'nl')
+    # "ch": "de",  # Thụy Sĩ - Tiếng Đức (Hoặc 'fr', 'it')
+    # "at": "de",  # Áo - Tiếng Đức
+    # "se": "sv",  # Thụy Điển - Tiếng Thụy Điển
+    # "no": "no",  # Na Uy - Tiếng Na Uy
+    # "dk": "da",  # Đan Mạch - Tiếng Đan Mạch
+    # "fi": "fi",  # Phần Lan - Tiếng Phần Lan
+    # "pl": "pl",  # Ba Lan - Tiếng Ba Lan
+    # "cz": "cs",  # Cộng hòa Séc - Tiếng Séc
+    # "ro": "ro",  # Romania - Tiếng Romania
+    # "hu": "hu",  # Hungary - Tiếng Hungary
+    # "gr": "el",  # Hy Lạp - Tiếng Hy Lạp
+    # "tr": "tr",  # Thổ Nhĩ Kỳ - Tiếng Thổ Nhĩ Kỳ
 
-    # --- CHÂU MỸ ---
-    "us": "en",  # Mỹ - Tiếng Anh
-    "ca": "en",  # Canada - Tiếng Anh (Hoặc 'fr')
-    "mx": "es",  # Mexico - Tiếng Tây Ban Nha
-    "br": "pt",  # Brazil - Tiếng Bồ Đào Nha
-    "ar": "es",  # Argentina - Tiếng Tây Ban Nha
-    "co": "es",  # Colombia - Tiếng Tây Ban Nha
-    "cl": "es",  # Chile - Tiếng Tây Ban Nha
-    "pe": "es",  # Peru - Tiếng Tây Ban Nha
-    "ve": "es",  # Venezuela - Tiếng Tây Ban Nha
+    # # --- CHÂU MỸ ---
+    # "us": "en",  # Mỹ - Tiếng Anh
+    # "ca": "en",  # Canada - Tiếng Anh (Hoặc 'fr')
+    # "mx": "es",  # Mexico - Tiếng Tây Ban Nha
+    # "br": "pt",  # Brazil - Tiếng Bồ Đào Nha
+    # "ar": "es",  # Argentina - Tiếng Tây Ban Nha
+    # "co": "es",  # Colombia - Tiếng Tây Ban Nha
+    # "cl": "es",  # Chile - Tiếng Tây Ban Nha
+    # "pe": "es",  # Peru - Tiếng Tây Ban Nha
+    # "ve": "es",  # Venezuela - Tiếng Tây Ban Nha
 
-    # --- TRUNG ĐÔNG & CHÂU PHI ---
-    "ae": "ar",  # UAE (Các Tiểu vương quốc Ả Rập) - Tiếng Ả Rập
-    "sa": "ar",  # Ả Rập Xê Út - Tiếng Ả Rập
-    "eg": "ar",  # Ai Cập - Tiếng Ả Rập
-    "il": "he",  # Israel - Tiếng Do Thái (Hebrew)
-    "za": "en"   # Nam Phi - Tiếng Anh
+    # # --- TRUNG ĐÔNG & CHÂU PHI ---
+    # "ae": "ar",  # UAE (Các Tiểu vương quốc Ả Rập) - Tiếng Ả Rập
+    # "sa": "ar",  # Ả Rập Xê Út - Tiếng Ả Rập
+    # "eg": "ar",  # Ai Cập - Tiếng Ả Rập
+    # "il": "he",  # Israel - Tiếng Do Thái (Hebrew)
+    # "za": "en"   # Nam Phi - Tiếng Anh
 }
 
 # 3 Chủ đề hot nhất
