@@ -67,8 +67,8 @@ COUNTRY_LANG_MAP = {
     # "za": "en"   # Nam Phi - Tiếng Anh
 }
 
-# 4 Chủ đề hot nhất
-CATEGORIES = "breaking,business,technology"
+# Chủ đề hot nhất
+CATEGORIES = "health,business,technology,science"
 all_news_data = {}
 
 print(f"🚀 Bắt đầu lấy tin tức cho {len(COUNTRY_LANG_MAP)} quốc gia...\n")
@@ -86,7 +86,7 @@ for country, language in COUNTRY_LANG_MAP.items():
             used_urls = set()
             
             # --- VÒNG LẶP 1: Nhặt theo chủ đề ---
-            grouped_news = {"business": [], "technology": [], "breaking": []}
+            grouped_news = {"business": [], "technology": [], "health": [],"science": []}
             
             for article in results:
                 article_url = article.get("link", "")
