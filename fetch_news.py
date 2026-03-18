@@ -16,7 +16,7 @@ COUNTRY_LANG_MAP = {
     "cn": "zh",  # Trung Quốc - Tiếng Trung
     "tw": "zh",  # Đài Loan - Tiếng Trung
     "hk": "zh",  # Hồng Kông - Tiếng Trung
-    "in": "hi",  # Ấn Độ - Tiếng Hindi (Hoặc dùng 'en' nếu muốn lấy báo tiếng Anh)
+    "in": "en",  # Ấn Độ - Tiếng Hindi (Hoặc dùng 'en' nếu muốn lấy báo tiếng Anh)
     "id": "id",  # Indonesia - Tiếng Indo
     "my": "ms",  # Malaysia - Tiếng Mã Lai
     "th": "th",  # Thái Lan - Tiếng Thái
