@@ -2,7 +2,8 @@ name: Auto Fetch News 4 Times/Day
 
 on:
   schedule:
-    - cron: '0 0,6,12,18 * * *'
+    # Chạy mỗi 8 tiếng vào các mốc: 00:00, 08:00, 16:00 (Giờ UTC)
+    - cron: '0 0,8,16 * * *'
   workflow_dispatch:
 
 jobs:
