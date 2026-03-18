@@ -1,4 +1,4 @@
-name: Auto Fetch News 4 Times/Day
+name: Auto Fetch News 3 Times/Day
 
 on:
   schedule:
@@ -6,17 +6,21 @@ on:
     - cron: '0 0,8,16 * * *'
   workflow_dispatch:
 
+# Thêm khối này để tự động cấp quyền cho Bot được phép Push file JSON lên
+permissions:
+  contents: write
+
 jobs:
   fetch-and-save:
     runs-on: ubuntu-latest
-    env: # Thêm dòng này để ép GitHub dùng Node.js 24
+    env: 
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v4 # Đã nâng cấp lên v4
+        uses: actions/checkout@v4
 
       - name: Setup Python
-        uses: actions/setup-python@v5 # Đã nâng cấp lên v5
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
