@@ -8,6 +8,8 @@ on:
 jobs:
   fetch-and-save:
     runs-on: ubuntu-latest
+    env: # Thêm dòng này để ép GitHub dùng Node.js 24
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4 # Đã nâng cấp lên v4
