@@ -68,7 +68,7 @@ COUNTRY_LANG_MAP = {
 }
 
 # 4 Chủ đề hot nhất
-CATEGORIES = "top,business,technology,breaking"
+CATEGORIES = "breaking,business,technology"
 all_news_data = {}
 
 print(f"🚀 Bắt đầu lấy tin tức cho {len(COUNTRY_LANG_MAP)} quốc gia...\n")
@@ -86,7 +86,7 @@ for country, language in COUNTRY_LANG_MAP.items():
             used_urls = set()
             
             # --- VÒNG LẶP 1: Nhặt theo chủ đề ---
-            grouped_news = {"top": [], "business": [], "technology": [], "breaking": []}
+            grouped_news = {"business": [], "technology": [], "breaking": []}
             
             for article in results:
                 article_url = article.get("link", "")
