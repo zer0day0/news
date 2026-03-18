@@ -67,7 +67,7 @@ COUNTRY_LANG_MAP = {
     # "za": "en"   # Nam Phi - Tiếng Anh
 }
 
-# 3 Chủ đề hot nhất
+# 4 Chủ đề hot nhất
 CATEGORIES = "top,business,technology,breaking"
 all_news_data = {}
 
@@ -82,38 +82,69 @@ for country, language in COUNTRY_LANG_MAP.items():
         
         if data.get("status") == "success":
             results = data.get("results", [])
+            final_news = []
+            used_urls = set()
+            
+            # --- VÒNG LẶP 1: Nhặt theo chủ đề ---
             grouped_news = {"top": [], "business": [], "technology": [], "breaking": []}
             
             for article in results:
+                article_url = article.get("link", "")
                 categories_of_article = article.get("category", [])
+                
                 for cat in categories_of_article:
-                    if cat in grouped_news and len(grouped_news[cat]) < 2:
+                    if cat in grouped_news and len(grouped_news[cat]) < 2 and article_url not in used_urls:
                         grouped_news[cat].append({
                             "title": article.get("title", ""),
-                            "url": article.get("link", ""), 
-                            "source": article.get("source_name", "")
+                            "url": article_url,
+                            # Ưu tiên lấy tên báo (source_name) cho đẹp, nếu không có mới lấy ID
+                            "source": article.get("source_name", article.get("source_id", "News")),
+                            "description": article.get("description", "") or "", 
+                            "category": categories_of_article,
+                            "pubDate": article.get("pubDate", ""),
+                            # Lấy thẳng fetched_at từ API
+                            "fetched_at": article.get("fetched_at", ""), 
+                            "image_url": article.get("image_url", "") or ""
                         })
+                        used_urls.add(article_url)
                         break
             
-            final_6_news = []
             for cat, items in grouped_news.items():
-                final_6_news.extend(items)
+                final_news.extend(items)
                 
-            all_news_data[country] = final_6_news
-            print(f"✅ Thành công: {country.upper()} (Ngôn ngữ: {language}) - Lấy được {len(final_6_news)} bài")
+            # --- VÒNG LẶP 2: Vét máng cho đủ 8 bài ---
+            if len(final_news) < 8:
+                for article in results:
+                    if len(final_news) >= 8: 
+                        break
+                        
+                    article_url = article.get("link", "")
+                    if article_url not in used_urls:
+                        final_news.append({
+                            "title": article.get("title", ""),
+                            "url": article_url,
+                            "source": article.get("source_name", article.get("source_id", "News")),
+                            "description": article.get("description", "") or "",
+                            "category": article.get("category", []),
+                            "pubDate": article.get("pubDate", ""),
+                            "fetched_at": article.get("fetched_at", ""),
+                            "image_url": article.get("image_url", "") or ""
+                        })
+                        used_urls.add(article_url)
+            
+            # --- VÒNG LẶP 3: Sort theo pubDate ---
+            final_news.sort(key=lambda x: str(x.get("pubDate", "")), reverse=True)
+
+            all_news_data[country] = final_news
+            print(f"✅ Thành công: {country.upper()} - Lấy được {len(final_news)} bài")
             
         else:
-            # Nếu API báo lỗi (Ví dụ: hết lượt, sai key...)
             print(f"❌ Lỗi API ở {country.upper()}: {data.get('results', data)}")
             
     except Exception as e:
         print(f"❌ Lỗi mạng/Hệ thống ở {country.upper()}: {str(e)}")
         
-    # Nghỉ 1.5 giây để tránh bị Newsdata khóa mõm vì Spam Request
     time.sleep(1.5)
 
-# Lưu thành 1 file JSON duy nhất chứa data của cả 50 nước
 with open("news_data.json", "w", encoding="utf-8") as f:
     json.dump(all_news_data, f, ensure_ascii=False, indent=4)
-    
-print("\n🎉 Đã hoàn tất! Dữ liệu được lưu vào news_data.json")
