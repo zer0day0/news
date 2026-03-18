@@ -5,6 +5,7 @@ import os
 
 # Lấy API Key từ Github Secrets
 API_KEY = os.environ.get("NEWSDATA_API_KEY")
+FILE_NAME = "news_data.json" # Tên file lưu trữ
 
 # TỪ ĐIỂN 50 QUỐC GIA & NGÔN NGỮ CHUẨN CỦA NEWSDATA.IO
 COUNTRY_LANG_MAP = {
@@ -67,12 +68,22 @@ COUNTRY_LANG_MAP = {
     # "za": "en"   # Nam Phi - Tiếng Anh
 }
 
-# Chủ đề hot nhất
+# Chủ đề hot nhất cho App Đồng hồ thông minh
 CATEGORIES = "health,business,technology,science"
+
+# --- BƯỚC 1: ĐỌC LẠI DATA CŨ ĐỂ LÀM "PHAO CỨU SINH" ---
 all_news_data = {}
+if os.path.exists(FILE_NAME):
+    try:
+        with open(FILE_NAME, "r", encoding="utf-8") as f:
+            all_news_data = json.load(f)
+        print("📦 Đã load thành công data cũ làm Backup!")
+    except Exception as e:
+        print("⚠️ File cũ trống hoặc lỗi, sẽ tạo mới hoàn toàn.")
 
 print(f"🚀 Bắt đầu lấy tin tức cho {len(COUNTRY_LANG_MAP)} quốc gia...\n")
 
+# --- BƯỚC 2: TIẾN HÀNH CẬP NHẬT TỪNG QUỐC GIA ---
 for country, language in COUNTRY_LANG_MAP.items():
     url = f"https://newsdata.io/api/1/latest?apikey={API_KEY}&country={country}&category={CATEGORIES}&language={language}"
     
@@ -132,19 +143,26 @@ for country, language in COUNTRY_LANG_MAP.items():
                         })
                         used_urls.add(article_url)
             
-            # --- VÒNG LẶP 3: Sort theo pubDate ---
+            # --- VÒNG LẶP 3: Sort theo pubDate (Mới nhất lên đầu) ---
             final_news.sort(key=lambda x: str(x.get("pubDate", "")), reverse=True)
 
-            all_news_data[country] = final_news
-            print(f"✅ Thành công: {country.upper()} - Lấy được {len(final_news)} bài")
+            # CHỈ GHI ĐÈ DICTIONARY NẾU CÓ DATA MỚI TRẢ VỀ
+            if len(final_news) > 0:
+                all_news_data[country] = final_news
+                print(f"✅ Thành công: {country.upper()} - Lấy được {len(final_news)} bài")
+            else:
+                print(f"⚠️ {country.upper()} không có tin mới, giữ nguyên data cũ.")
             
         else:
-            print(f"❌ Lỗi API ở {country.upper()}: {data.get('results', data)}")
+            print(f"❌ Lỗi API ở {country.upper()}: {data.get('results', data)} -> Dùng lại data cũ.")
             
     except Exception as e:
-        print(f"❌ Lỗi mạng/Hệ thống ở {country.upper()}: {str(e)}")
+        print(f"❌ Lỗi mạng/Hệ thống ở {country.upper()}: {str(e)} -> Dùng lại data cũ.")
         
     time.sleep(1.5)
 
-with open("news_data.json", "w", encoding="utf-8") as f:
+# --- BƯỚC 3: XUẤT RA FILE AN TOÀN ---
+with open(FILE_NAME, "w", encoding="utf-8") as f:
     json.dump(all_news_data, f, ensure_ascii=False, indent=4)
+
+print("\n🎉 Đã hoàn tất! Dữ liệu được lưu an toàn vào news_data.json")
