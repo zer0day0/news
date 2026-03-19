@@ -7,65 +7,67 @@ import os
 API_KEY = os.environ.get("NEWSDATA_API_KEY")
 FILE_NAME = "news_data.json" # Tên file lưu trữ
 
-# TỪ ĐIỂN 50 QUỐC GIA & NGÔN NGỮ CHUẨN CỦA NEWSDATA.IO
+# TỪ ĐIỂN 50 QUỐC GIA CHẠY ADS (ĐÃ TỐI ƯU eCPM VÀ CHẤT LƯỢNG TIN TỨC)
 COUNTRY_LANG_MAP = {
-    # --- CHÂU Á & THÁI BÌNH DƯƠNG ---
-    "vn": "vi",  # Việt Nam - Tiếng Việt
-    "jp": "ja",  # Nhật Bản - Tiếng Nhật (Newsdata dùng 'ja')
-    "kr": "ko",  # Hàn Quốc - Tiếng Hàn
-    "cn": "zh",  # Trung Quốc - Tiếng Trung
-    "tw": "zh",  # Đài Loan - Tiếng Trung
-    "hk": "zh",  # Hồng Kông - Tiếng Trung
-    "in": "en",  # Ấn Độ - Tiếng Hindi (Hoặc dùng 'en' nếu muốn lấy báo tiếng Anh)
-    "id": "id",  # Indonesia - Tiếng Indo
-    "my": "ms",  # Malaysia - Tiếng Mã Lai
-    "th": "th",  # Thái Lan - Tiếng Thái
-    "sg": "en",  # Singapore - Tiếng Anh
-    "ph": "en",  # Philippines - Tiếng Anh
-    "au": "en",  # Úc - Tiếng Anh
-    "nz": "en",  # New Zealand - Tiếng Anh
+    # --- TIER 1 & CHÂU ÂU (eCPM CAO - Khách V.I.P) ---
+    "us": "en",  # Mỹ
+    "gb": "en",  # Anh
+    "ca": "en",  # Canada
+    "de": "de",  # Đức
+    "fr": "fr",  # Pháp
+    "es": "es",  # Tây Ban Nha
+    "it": "it",  # Ý (MỚI THÊM)
+    "nl": "nl",  # Hà Lan
+    "be": "fr",  # Bỉ 
+    "pt": "pt",  # Bồ Đào Nha
+    "pl": "pl",  # Ba Lan
+    "gr": "el",  # Hy Lạp
+    "ro": "ro",  # Romania
 
-    # # --- CHÂU ÂU ---
-    "gb": "en",  # Anh Quốc - Tiếng Anh
-    "fr": "fr",  # Pháp - Tiếng Pháp
-    "de": "de",  # Đức - Tiếng Đức
-    "it": "it",  # Ý - Tiếng Ý
-    "es": "es",  # Tây Ban Nha - Tiếng Tây Ban Nha
-    "pt": "pt",  # Bồ Đào Nha - Tiếng Bồ Đào Nha
-    "ru": "ru",  # Nga - Tiếng Nga
-    "ua": "uk",  # Ukraine - Tiếng Ukraine
-    "nl": "nl",  # Hà Lan - Tiếng Hà Lan
-    "be": "fr",  # Bỉ - Tiếng Pháp (Hoặc 'nl')
-    "ch": "de",  # Thụy Sĩ - Tiếng Đức (Hoặc 'fr', 'it')
-    "at": "de",  # Áo - Tiếng Đức
-    "se": "sv",  # Thụy Điển - Tiếng Thụy Điển
-    "no": "no",  # Na Uy - Tiếng Na Uy
-    "dk": "da",  # Đan Mạch - Tiếng Đan Mạch
-    "fi": "fi",  # Phần Lan - Tiếng Phần Lan
-    "pl": "pl",  # Ba Lan - Tiếng Ba Lan
-    "cz": "cs",  # Cộng hòa Séc - Tiếng Séc
-    "ro": "ro",  # Romania - Tiếng Romania
-    "hu": "hu",  # Hungary - Tiếng Hungary
-    "gr": "el",  # Hy Lạp - Tiếng Hy Lạp
-    "tr": "tr",  # Thổ Nhĩ Kỳ - Tiếng Thổ Nhĩ Kỳ
+    # --- CHÂU MỸ LATIN ---
+    "mx": "es",  # Mexico
+    "co": "es",  # Colombia
+    "ve": "es",  # Venezuela
 
-    # # --- CHÂU MỸ ---
-    "us": "en",  # Mỹ - Tiếng Anh
-    "ca": "en",  # Canada - Tiếng Anh (Hoặc 'fr')
-    "mx": "es",  # Mexico - Tiếng Tây Ban Nha
-    "br": "pt",  # Brazil - Tiếng Bồ Đào Nha
-    "ar": "es",  # Argentina - Tiếng Tây Ban Nha
-    "co": "es",  # Colombia - Tiếng Tây Ban Nha
-    "cl": "es",  # Chile - Tiếng Tây Ban Nha
-    "pe": "es",  # Peru - Tiếng Tây Ban Nha
-    "ve": "es",  # Venezuela - Tiếng Tây Ban Nha
+    # --- CHÂU Á & ĐẠI DƯƠNG (Volume khủng + eCPM tốt) ---
+    "vn": "vi",  # Việt Nam (Để Dev tự test)
+    "in": "en",  # Ấn Độ (MỚI THÊM - Dùng tiếng Anh để lấy tin Tech/Biz)
+    "sg": "en",  # Singapore (MỚI THÊM)
+    "id": "id",  # Indonesia
+    "th": "th",  # Thái Lan
+    "ph": "en",  # Philippines
+    "kh": "en",  # Campuchia 
+    "bd": "en",  # Bangladesh 
+    "pk": "en",  # Pakistan
+    "np": "en",  # Nepal
+    "pg": "en",  # Papua New Guinea
 
-    # # --- TRUNG ĐÔNG & CHÂU PHI ---
-    "ae": "ar",  # UAE (Các Tiểu vương quốc Ả Rập) - Tiếng Ả Rập
-    "sa": "ar",  # Ả Rập Xê Út - Tiếng Ả Rập
-    "eg": "ar",  # Ai Cập - Tiếng Ả Rập
-    "il": "he",  # Israel - Tiếng Do Thái (Hebrew)
-    "za": "en"   # Nam Phi - Tiếng Anh
+    # --- TRUNG ĐÔNG (eCPM Rất Tốt) ---
+    "ae": "en",  # UAE 
+    "sa": "ar",  # Saudi Arabia (MỚI THÊM)
+    "il": "he",  # Israel (MỚI THÊM)
+    "iq": "ar",  # Iraq
+    "tr": "tr",  # Thổ Nhĩ Kỳ
+
+    # --- CHÂU PHI (Giữ lại các nước có Volume app của bạn tốt nhất) ---
+    "za": "en",  # Nam Phi (MỚI THÊM - eCPM đỉnh nhất Châu Phi)
+    "eg": "ar",  # Ai Cập
+    "dz": "ar",  # Algeria
+    "tn": "ar",  # Tunisia
+    "cm": "fr",  # Cameroon
+    "ug": "en",  # Uganda
+    "na": "en",  # Namibia
+    "rw": "en",  # Rwanda
+    "mz": "pt",  # Mozambique
+    "ml": "fr",  # Mali
+    "tg": "fr",  # Togo
+    "sd": "ar",  # Sudan
+    "zm": "en",  # Zambia
+    "bj": "fr",  # Benin
+    "zw": "en",  # Zimbabwe
+    "bw": "en",  # Botswana
+    "mg": "fr",  # Madagascar
+    "ao": "pt"   # Angola
 }
 
 # Chủ đề hot nhất cho App Đồng hồ thông minh
