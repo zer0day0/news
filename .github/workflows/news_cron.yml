@@ -44,7 +44,7 @@ jobs:
 
       - name: Ép jsDelivr xóa Cache (Chống bóng ma data cũ)
         run: |
-          echo "Chờ 5 giây để GitHub đồng bộ file mới..."
-          sleep 5
+          echo "Chờ 20 giây để GitHub đồng bộ file mới..."
+          sleep 20
           echo "Đang dọn dẹp Cache trên jsDelivr..."
           curl -s "https://purge.jsdelivr.net/gh/zer0day0/news@main/news_data.json"
