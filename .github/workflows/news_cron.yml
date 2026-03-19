@@ -1,8 +1,8 @@
-name: Auto Fetch News 3 Times/Day
+name: Auto Fetch News 4 Times/Day
 
 on:
   schedule:
-    # Chạy mỗi 8 tiếng vào các mốc: 00:00, 08:00, 16:00 (Giờ UTC)
+    # Chạy 4 lần/ngày vào: 08:00, 14:00, 20:00, 02:00 (Giờ Việt Nam - UTC+7)
     - cron: '0 1,7,13,19 * * *'
   workflow_dispatch:
 
@@ -41,7 +41,10 @@ jobs:
           git add news_data.json
           git commit -m "Auto-update news JSON" || echo "No changes to commit"
           git push
-      - name: Ép jsDelivr xóa Cache ngay lập tức
+
+      - name: Ép jsDelivr xóa Cache (Chống bóng ma data cũ)
         run: |
+          echo "Chờ 5 giây để GitHub đồng bộ file mới..."
+          sleep 5
           echo "Đang dọn dẹp Cache trên jsDelivr..."
-          curl -s https://purge.jsdelivr.net/gh/zer0day0/news@main/news_data.json
+          curl -s "https://purge.jsdelivr.net/gh/zer0day0/news@main/news_data.json"
