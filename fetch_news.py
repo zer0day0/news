@@ -96,30 +96,40 @@ for country, language in COUNTRY_LANG_MAP.items():
         if data.get("status") == "success":
             results = data.get("results", [])
             final_news = []
+            
+            # LƯỚI LỌC KÉP: Chặn trùng URL và chặn trùng Tiêu đề
             used_urls = set()
+            used_titles = set() 
             
             # --- VÒNG LẶP 1: Nhặt theo chủ đề ---
             grouped_news = {"business": [], "technology": [], "health": [],"science": []}
             
             for article in results:
                 article_url = article.get("link", "")
+                raw_title = article.get("title", "")
+                
+                # Làm sạch tiêu đề (Viết thường, bỏ khoảng trắng hai đầu) để so sánh chuẩn nhất
+                clean_title = raw_title.lower().strip() if raw_title else ""
+                
                 categories_of_article = article.get("category", [])
                 
                 for cat in categories_of_article:
-                    if cat in grouped_news and len(grouped_news[cat]) < 2 and article_url not in used_urls:
+                    # Kiểm tra xem URL hoặc Tiêu đề này đã có trong set chưa
+                    if cat in grouped_news and len(grouped_news[cat]) < 2 and article_url not in used_urls and clean_title not in used_titles:
                         grouped_news[cat].append({
-                            "title": article.get("title", ""),
+                            "title": raw_title,
                             "url": article_url,
-                            # Ưu tiên lấy tên báo (source_name) cho đẹp, nếu không có mới lấy ID
                             "source": article.get("source_name", article.get("source_id", "News")),
                             "description": article.get("description", "") or "", 
                             "category": categories_of_article,
                             "pubDate": article.get("pubDate", ""),
-                            # Lấy thẳng fetched_at từ API
                             "fetched_at": article.get("fetched_at", ""), 
                             "image_url": article.get("image_url", "") or ""
                         })
+                        # Đánh dấu là đã lấy
                         used_urls.add(article_url)
+                        if clean_title:
+                            used_titles.add(clean_title)
                         break
             
             for cat, items in grouped_news.items():
@@ -132,9 +142,13 @@ for country, language in COUNTRY_LANG_MAP.items():
                         break
                         
                     article_url = article.get("link", "")
-                    if article_url not in used_urls:
+                    raw_title = article.get("title", "")
+                    clean_title = raw_title.lower().strip() if raw_title else ""
+                    
+                    # Áp dụng lưới lọc kép cho cả vòng vét máng
+                    if article_url not in used_urls and clean_title not in used_titles:
                         final_news.append({
-                            "title": article.get("title", ""),
+                            "title": raw_title,
                             "url": article_url,
                             "source": article.get("source_name", article.get("source_id", "News")),
                             "description": article.get("description", "") or "",
@@ -144,6 +158,8 @@ for country, language in COUNTRY_LANG_MAP.items():
                             "image_url": article.get("image_url", "") or ""
                         })
                         used_urls.add(article_url)
+                        if clean_title:
+                            used_titles.add(clean_title)
             
             # --- VÒNG LẶP 3: Sort theo pubDate (Mới nhất lên đầu) ---
             final_news.sort(key=lambda x: str(x.get("pubDate", "")), reverse=True)
@@ -151,7 +167,7 @@ for country, language in COUNTRY_LANG_MAP.items():
             # CHỈ GHI ĐÈ DICTIONARY NẾU CÓ DATA MỚI TRẢ VỀ
             if len(final_news) > 0:
                 all_news_data[country] = final_news
-                print(f"✅ Thành công: {country.upper()} - Lấy được {len(final_news)} bài")
+                print(f"✅ Thành công: {country.upper()} - Lấy được {len(final_news)} bài (Đã lọc trùng lặp)")
             else:
                 print(f"⚠️ {country.upper()} không có tin mới, giữ nguyên data cũ.")
             
