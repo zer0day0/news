@@ -41,3 +41,7 @@ jobs:
           git add news_data.json
           git commit -m "Auto-update news JSON" || echo "No changes to commit"
           git push
+      - name: Ép jsDelivr xóa Cache ngay lập tức
+        run: |
+          echo "Đang dọn dẹp Cache trên jsDelivr..."
+          curl -s https://purge.jsdelivr.net/gh/zer0day0/news@main/news_data.json
