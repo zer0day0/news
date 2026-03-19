@@ -3,7 +3,7 @@ name: Auto Fetch News 3 Times/Day
 on:
   schedule:
     # Chạy mỗi 8 tiếng vào các mốc: 00:00, 08:00, 16:00 (Giờ UTC)
-    - cron: '0 0,8,16 * * *'
+    - cron: '0 1,7,13,19 * * *'
   workflow_dispatch:
 
 # Thêm khối này để tự động cấp quyền cho Bot được phép Push file JSON lên
