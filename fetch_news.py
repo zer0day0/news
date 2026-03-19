@@ -11,63 +11,63 @@ FILE_NAME = "news_data.json" # Tên file lưu trữ
 COUNTRY_LANG_MAP = {
     # --- TIER 1 & CHÂU ÂU (eCPM CAO - Khách V.I.P) ---
     "us": "en",  # Mỹ
-    "gb": "en",  # Anh
-    "ca": "en",  # Canada
-    "de": "de",  # Đức
-    "fr": "fr",  # Pháp
-    "es": "es",  # Tây Ban Nha
-    "it": "it",  # Ý (MỚI THÊM)
-    "nl": "nl",  # Hà Lan
-    "be": "fr",  # Bỉ 
-    "pt": "pt",  # Bồ Đào Nha
-    "pl": "pl",  # Ba Lan
-    "gr": "el",  # Hy Lạp
-    "ro": "ro",  # Romania
+    # "gb": "en",  # Anh
+    # "ca": "en",  # Canada
+    # "de": "de",  # Đức
+    # "fr": "fr",  # Pháp
+    # "es": "es",  # Tây Ban Nha
+    # "it": "it",  # Ý (MỚI THÊM)
+    # "nl": "nl",  # Hà Lan
+    # "be": "fr",  # Bỉ 
+    # "pt": "pt",  # Bồ Đào Nha
+    # "pl": "pl",  # Ba Lan
+    # "gr": "el",  # Hy Lạp
+    # "ro": "ro",  # Romania
 
-    # --- CHÂU MỸ LATIN ---
-    "mx": "es",  # Mexico
-    "co": "es",  # Colombia
-    "ve": "es",  # Venezuela
+    # # --- CHÂU MỸ LATIN ---
+    # "mx": "es",  # Mexico
+    # "co": "es",  # Colombia
+    # "ve": "es",  # Venezuela
 
-    # --- CHÂU Á & ĐẠI DƯƠNG (Volume khủng + eCPM tốt) ---
-    "vn": "vi",  # Việt Nam (Để Dev tự test)
-    "in": "en",  # Ấn Độ (MỚI THÊM - Dùng tiếng Anh để lấy tin Tech/Biz)
-    "sg": "en",  # Singapore (MỚI THÊM)
-    "id": "id",  # Indonesia
-    "th": "th",  # Thái Lan
-    "ph": "en",  # Philippines
-    "kh": "en",  # Campuchia 
-    "bd": "en",  # Bangladesh 
-    "pk": "en",  # Pakistan
-    "np": "en",  # Nepal
-    "pg": "en",  # Papua New Guinea
+    # # --- CHÂU Á & ĐẠI DƯƠNG (Volume khủng + eCPM tốt) ---
+    # "vn": "vi",  # Việt Nam (Để Dev tự test)
+    # "in": "en",  # Ấn Độ (MỚI THÊM - Dùng tiếng Anh để lấy tin Tech/Biz)
+    # "sg": "en",  # Singapore (MỚI THÊM)
+    # "id": "id",  # Indonesia
+    # "th": "th",  # Thái Lan
+    # "ph": "en",  # Philippines
+    # "kh": "en",  # Campuchia 
+    # "bd": "en",  # Bangladesh 
+    # "pk": "en",  # Pakistan
+    # "np": "en",  # Nepal
+    # "pg": "en",  # Papua New Guinea
 
-    # --- TRUNG ĐÔNG (eCPM Rất Tốt) ---
-    "ae": "en",  # UAE 
-    "sa": "ar",  # Saudi Arabia (MỚI THÊM)
-    "il": "he",  # Israel (MỚI THÊM)
-    "iq": "ar",  # Iraq
-    "tr": "tr",  # Thổ Nhĩ Kỳ
+    # # --- TRUNG ĐÔNG (eCPM Rất Tốt) ---
+    # "ae": "en",  # UAE 
+    # "sa": "ar",  # Saudi Arabia (MỚI THÊM)
+    # "il": "he",  # Israel (MỚI THÊM)
+    # "iq": "ar",  # Iraq
+    # "tr": "tr",  # Thổ Nhĩ Kỳ
 
-    # --- CHÂU PHI (Giữ lại các nước có Volume app của bạn tốt nhất) ---
-    "za": "en",  # Nam Phi (MỚI THÊM - eCPM đỉnh nhất Châu Phi)
-    "eg": "ar",  # Ai Cập
-    "dz": "ar",  # Algeria
-    "tn": "ar",  # Tunisia
-    "cm": "fr",  # Cameroon
-    "ug": "en",  # Uganda
-    "na": "en",  # Namibia
-    "rw": "en",  # Rwanda
-    "mz": "pt",  # Mozambique
-    "ml": "fr",  # Mali
-    "tg": "fr",  # Togo
-    "sd": "ar",  # Sudan
-    "zm": "en",  # Zambia
-    "bj": "fr",  # Benin
-    "zw": "en",  # Zimbabwe
-    "bw": "en",  # Botswana
-    "mg": "fr",  # Madagascar
-    "ao": "pt"   # Angola
+    # # --- CHÂU PHI (Giữ lại các nước có Volume app của bạn tốt nhất) ---
+    # "za": "en",  # Nam Phi (MỚI THÊM - eCPM đỉnh nhất Châu Phi)
+    # "eg": "ar",  # Ai Cập
+    # "dz": "ar",  # Algeria
+    # "tn": "ar",  # Tunisia
+    # "cm": "fr",  # Cameroon
+    # "ug": "en",  # Uganda
+    # "na": "en",  # Namibia
+    # "rw": "en",  # Rwanda
+    # "mz": "pt",  # Mozambique
+    # "ml": "fr",  # Mali
+    # "tg": "fr",  # Togo
+    # "sd": "ar",  # Sudan
+    # "zm": "en",  # Zambia
+    # "bj": "fr",  # Benin
+    # "zw": "en",  # Zimbabwe
+    # "bw": "en",  # Botswana
+    # "mg": "fr",  # Madagascar
+    # "ao": "pt"   # Angola
 }
 
 # Chủ đề hot nhất cho App Đồng hồ thông minh
