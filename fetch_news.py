@@ -11,63 +11,63 @@ FILE_NAME = "news_data.json" # Tên file lưu trữ
 COUNTRY_LANG_MAP = {
     # --- TIER 1 & CHÂU ÂU (eCPM CAO - Khách V.I.P) ---
     "us": "en",  # Mỹ
-    # "gb": "en",  # Anh
-    # "ca": "en",  # Canada
-    # "de": "de",  # Đức
-    # "fr": "fr",  # Pháp
-    # "es": "es",  # Tây Ban Nha
-    # "it": "it",  # Ý (MỚI THÊM)
-    # "nl": "nl",  # Hà Lan
-    # "be": "fr",  # Bỉ 
-    # "pt": "pt",  # Bồ Đào Nha
-    # "pl": "pl",  # Ba Lan
-    # "gr": "el",  # Hy Lạp
-    # "ro": "ro",  # Romania
+    "gb": "en",  # Anh
+    "ca": "en",  # Canada
+    "de": "de",  # Đức
+    "fr": "fr",  # Pháp
+    "es": "es",  # Tây Ban Nha
+    "it": "it",  # Ý (MỚI THÊM)
+    "nl": "nl",  # Hà Lan
+    "be": "fr",  # Bỉ 
+    "pt": "pt",  # Bồ Đào Nha
+    "pl": "pl",  # Ba Lan
+    "gr": "el",  # Hy Lạp
+    "ro": "ro",  # Romania
 
-    # # --- CHÂU MỸ LATIN ---
-    # "mx": "es",  # Mexico
-    # "co": "es",  # Colombia
-    # "ve": "es",  # Venezuela
+    # --- CHÂU MỸ LATIN ---
+    "mx": "es",  # Mexico
+    "co": "es",  # Colombia
+    "ve": "es",  # Venezuela
 
-    # # --- CHÂU Á & ĐẠI DƯƠNG (Volume khủng + eCPM tốt) ---
-    # "vn": "vi",  # Việt Nam (Để Dev tự test)
-    # "in": "en",  # Ấn Độ (MỚI THÊM - Dùng tiếng Anh để lấy tin Tech/Biz)
-    # "sg": "en",  # Singapore (MỚI THÊM)
-    # "id": "id",  # Indonesia
-    # "th": "th",  # Thái Lan
-    # "ph": "en",  # Philippines
-    # "kh": "en",  # Campuchia 
-    # "bd": "en",  # Bangladesh 
-    # "pk": "en",  # Pakistan
-    # "np": "en",  # Nepal
-    # "pg": "en",  # Papua New Guinea
+    # --- CHÂU Á & ĐẠI DƯƠNG (Volume khủng + eCPM tốt) ---
+    "vn": "vi",  # Việt Nam (Để Dev tự test)
+    "in": "en",  # Ấn Độ (MỚI THÊM - Dùng tiếng Anh để lấy tin Tech/Biz)
+    "sg": "en",  # Singapore (MỚI THÊM)
+    "id": "id",  # Indonesia
+    "th": "th",  # Thái Lan
+    "ph": "en",  # Philippines
+    "kh": "en",  # Campuchia 
+    "bd": "en",  # Bangladesh 
+    "pk": "en",  # Pakistan
+    "np": "en",  # Nepal
+    "pg": "en",  # Papua New Guinea
 
-    # # --- TRUNG ĐÔNG (eCPM Rất Tốt) ---
-    # "ae": "en",  # UAE 
-    # "sa": "ar",  # Saudi Arabia (MỚI THÊM)
-    # "il": "he",  # Israel (MỚI THÊM)
-    # "iq": "ar",  # Iraq
-    # "tr": "tr",  # Thổ Nhĩ Kỳ
+    # --- TRUNG ĐÔNG (eCPM Rất Tốt) ---
+    "ae": "en",  # UAE 
+    "sa": "ar",  # Saudi Arabia (MỚI THÊM)
+    "il": "he",  # Israel (MỚI THÊM)
+    "iq": "ar",  # Iraq
+    "tr": "tr",  # Thổ Nhĩ Kỳ
 
-    # # --- CHÂU PHI (Giữ lại các nước có Volume app của bạn tốt nhất) ---
-    # "za": "en",  # Nam Phi (MỚI THÊM - eCPM đỉnh nhất Châu Phi)
-    # "eg": "ar",  # Ai Cập
-    # "dz": "ar",  # Algeria
-    # "tn": "ar",  # Tunisia
-    # "cm": "fr",  # Cameroon
-    # "ug": "en",  # Uganda
-    # "na": "en",  # Namibia
-    # "rw": "en",  # Rwanda
-    # "mz": "pt",  # Mozambique
-    # "ml": "fr",  # Mali
-    # "tg": "fr",  # Togo
-    # "sd": "ar",  # Sudan
-    # "zm": "en",  # Zambia
-    # "bj": "fr",  # Benin
-    # "zw": "en",  # Zimbabwe
-    # "bw": "en",  # Botswana
-    # "mg": "fr",  # Madagascar
-    # "ao": "pt"   # Angola
+    # --- CHÂU PHI (Giữ lại các nước có Volume app của bạn tốt nhất) ---
+    "za": "en",  # Nam Phi (MỚI THÊM - eCPM đỉnh nhất Châu Phi)
+    "eg": "ar",  # Ai Cập
+    "dz": "ar",  # Algeria
+    "tn": "ar",  # Tunisia
+    "cm": "fr",  # Cameroon
+    "ug": "en",  # Uganda
+    "na": "en",  # Namibia
+    "rw": "en",  # Rwanda
+    "mz": "pt",  # Mozambique
+    "ml": "fr",  # Mali
+    "tg": "fr",  # Togo
+    "sd": "ar",  # Sudan
+    "zm": "en",  # Zambia
+    "bj": "fr",  # Benin
+    "zw": "en",  # Zimbabwe
+    "bw": "en",  # Botswana
+    "mg": "fr",  # Madagascar
+    "ao": "pt"   # Angola
 }
 
 # Chủ đề hot nhất cho App Đồng hồ thông minh
@@ -96,57 +96,19 @@ for country, language in COUNTRY_LANG_MAP.items():
         if data.get("status") == "success":
             results = data.get("results", [])
             final_news = []
-            used_urls = set()
             
-            # --- VÒNG LẶP 1: Nhặt theo chủ đề ---
-            grouped_news = {"business": [], "technology": [], "health": [],"science": []}
-            
+            # CHỈ LẤY CÁC TRƯỜNG DỮ LIỆU NHƯ CŨ, KHÔNG LỌC TRÙNG LẶP
             for article in results:
-                article_url = article.get("link", "")
-                categories_of_article = article.get("category", [])
-                
-                for cat in categories_of_article:
-                    if cat in grouped_news and len(grouped_news[cat]) < 2 and article_url not in used_urls:
-                        grouped_news[cat].append({
-                            "title": article.get("title", ""),
-                            "url": article_url,
-                            # Ưu tiên lấy tên báo (source_name) cho đẹp, nếu không có mới lấy ID
-                            "source": article.get("source_name", article.get("source_id", "News")),
-                            "description": article.get("description", "") or "", 
-                            "category": categories_of_article,
-                            "pubDate": article.get("pubDate", ""),
-                            # Lấy thẳng fetched_at từ API
-                            "fetched_at": article.get("fetched_at", ""), 
-                            "image_url": article.get("image_url", "") or ""
-                        })
-                        used_urls.add(article_url)
-                        break
-            
-            for cat, items in grouped_news.items():
-                final_news.extend(items)
-                
-            # --- VÒNG LẶP 2: Vét máng cho đủ 8 bài ---
-            if len(final_news) < 8:
-                for article in results:
-                    if len(final_news) >= 8: 
-                        break
-                        
-                    article_url = article.get("link", "")
-                    if article_url not in used_urls:
-                        final_news.append({
-                            "title": article.get("title", ""),
-                            "url": article_url,
-                            "source": article.get("source_name", article.get("source_id", "News")),
-                            "description": article.get("description", "") or "",
-                            "category": article.get("category", []),
-                            "pubDate": article.get("pubDate", ""),
-                            "fetched_at": article.get("fetched_at", ""),
-                            "image_url": article.get("image_url", "") or ""
-                        })
-                        used_urls.add(article_url)
-            
-            # --- VÒNG LẶP 3: Sort theo pubDate (Mới nhất lên đầu) ---
-            final_news.sort(key=lambda x: str(x.get("pubDate", "")), reverse=True)
+                final_news.append({
+                    "title": article.get("title", ""),
+                    "url": article.get("link", ""),
+                    "source": article.get("source_name", article.get("source_id", "News")),
+                    "description": article.get("description", "") or "",
+                    "category": article.get("category", []),
+                    "pubDate": article.get("pubDate", ""),
+                    "fetched_at": article.get("fetched_at", ""),
+                    "image_url": article.get("image_url", "") or ""
+                })
 
             # CHỈ GHI ĐÈ DICTIONARY NẾU CÓ DATA MỚI TRẢ VỀ
             if len(final_news) > 0:
