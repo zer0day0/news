@@ -155,6 +155,8 @@ for country, language in COUNTRY_LANG_MAP.items():
     time.sleep(1.5)
 
 # --- BƯỚC 3: XUẤT RA FILE AN TOÀN ---
+# 🧹 DỌN RÁC: Chỉ giữ lại những quốc gia đang có trong COUNTRY_LANG_MAP hiện tại
+all_news_data = {k: v for k, v in all_news_data.items() if k in COUNTRY_LANG_MAP}
 with open(FILE_NAME, "w", encoding="utf-8") as f:
     json.dump(all_news_data, f, ensure_ascii=False, indent=4)
 
