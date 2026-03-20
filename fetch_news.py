@@ -2,6 +2,7 @@ import requests
 import json
 import time
 import os
+from datetime import datetime, timezone 
 
 # Lấy API Key từ Github Secrets
 API_KEY = os.environ.get("NEWSDATA_API_KEY")
@@ -71,7 +72,35 @@ COUNTRY_LANG_MAP = {
 }
 
 # Chủ đề hot nhất cho App Đồng hồ thông minh
-CATEGORIES = "world,business,technology,sports"
+CATEGORIES = "business,technology,sports,environment"
+
+# --- LOGIC TỰ ĐỘNG ĐỔI CATEGORY THEO KHUNG GIỜ (TỐI ƯU TRẢI NGHIỆM) ---
+# Lấy giờ hiện tại của Server Github (Tính theo UTC)
+current_utc_hour = datetime.now(timezone.utc).hour
+
+if 0 <= current_utc_hour < 6:
+    # 01:00 UTC (Tương ứng 08:00 Sáng VN)
+    CATEGORIES = "business,technology,sports,environment"
+    session_name = "🌅 BUỔI SÁNG (Kinh doanh, Tech, Thể thao, Môi trường)"
+
+elif 6 <= current_utc_hour < 12:
+    # 07:00 UTC (Tương ứng 14:00 Chiều VN)
+    CATEGORIES = "entertainment,food,lifestyle,tourism"
+    session_name = "☀️ BUỔI TRƯA/CHIỀU (Giải trí, Ẩm thực, Phong cách sống, Du lịch)"
+
+elif 12 <= current_utc_hour < 18:
+    # 13:00 UTC (Tương ứng 20:00 Tối VN)
+    CATEGORIES = "health,education,science,business"
+    session_name = "🌙 BUỔI TỐI (Sức khỏe, Giáo dục, Khoa học, Thị trường)"
+
+else:
+    # 19:00 UTC (Tương ứng 02:00 Đêm VN)
+    CATEGORIES = "technology,sports,environment,lifestyle"
+    session_name = "🌌 ĐÊM MUỘN (Tech, Thể thao, Môi trường, Đời sống)"
+
+print(f"🕒 Khung giờ hiện tại (UTC): {current_utc_hour}h")
+print(f"🎯 Đang kích hoạt chế độ: {session_name}")
+print(f"📡 Categories sẽ fetch: {CATEGORIES}\n")
 
 # --- BƯỚC 1: ĐỌC LẠI DATA CŨ ĐỂ LÀM "PHAO CỨU SINH" ---
 all_news_data = {}
